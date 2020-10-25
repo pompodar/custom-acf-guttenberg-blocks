@@ -27,15 +27,15 @@ function my_acf_init() {
             foreach ($phpFiles as $phpFile) {
 
                 // Register a new block.
-acf_register_block( array(
-    'name'            => str_replace(".php", "", $phpFile),
-    'title'           => str_replace(".php", "", $phpFile),
-    'description'     => 'Svjat block.',
-    'render_template' => 'blocks/' . $phpFile,
-    'category'        => 'formatting',
-    'icon'            => 'admin-comments',
-    'keywords'        => array( str_replace(".php", "", $phpFile) ),
-) );
+                acf_register_block( array(
+                    'name'            => str_replace(".php", "", $phpFile),
+                    'title'           => str_replace(".php", "", $phpFile),
+                    'description'     => 'Svjat block.',
+                    'render_template' => 'blocks/' . $phpFile,
+                    'category'        => 'formatting',
+                    'icon'            => 'admin-comments',
+                    'keywords'        => array( str_replace(".php", "", $phpFile) ),
+                ) );
             }
         } 
     }    
