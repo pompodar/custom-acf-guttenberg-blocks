@@ -16,7 +16,7 @@ function my_acf_init() {
         return;
     }
 
-    foreach (scandir(realpath(__DIR__ . "/block/")) as $files) {
+    foreach (scandir(realpath(__DIR__ . "/blocks/")) as $files) {
 
         if (strpos($files, 'php') !== false) {
             $phpFiles[] = $files;
@@ -31,7 +31,7 @@ acf_register_block( array(
     'name'            => str_replace(".php", "", $phpFile),
     'title'           => str_replace(".php", "", $phpFile),
     'description'     => 'Svjat block.',
-    'render_template' => 'block/' . $phpFile,
+    'render_template' => 'blocks/' . $phpFile,
     'category'        => 'formatting',
     'icon'            => 'admin-comments',
     'keywords'        => array( str_replace(".php", "", $phpFile) ),
