@@ -3,7 +3,7 @@
 add_action( 'wp_enqueue_scripts', 'enqueue_mytheme_style' );
 function enqueue_mytheme_style() {
 	wp_enqueue_style( 'theme-style', get_stylesheet_uri() );
-    wp_enqueue_style( 'additional-style', get_template_directory_uri() . '/css/styles.css');
+    wp_enqueue_style( 'additional-style', get_template_directory_uri() . '/css/style.css');
     }
 
 
@@ -16,16 +16,29 @@ function my_acf_init() {
         return;
     }
 
-    // Register a new block.
-    acf_register_block( array(
-        'name'            => 'example_block',
-        'title'           => __( 'Example Block', 'your-text-domain' ),
-        'description'     => __( 'A custom example block.', 'your-text-domain' ),
-        'render_template' => 'block/example-block.php',
-        'category'        => 'formatting',
-        'icon'            => 'admin-comments',
-        'keywords'        => array( 'example' ),
-    ) );
+    foreach (scandir(realpath(__DIR__ . "/block/")) as $files) {
+
+        if (strpos($files, 'php') !== false) {
+            $phpFiles[] = $files;
+        }
+
+        // Include php file(s)
+        if (count($phpFiles) > 0) {
+            foreach ($phpFiles as $phpFile) {
+
+                // Register a new block.
+acf_register_block( array(
+    'name'            => str_replace(".php", "", $phpFile),
+    'title'           => str_replace(".php", "", $phpFile),
+    'description'     => 'Svjat block.',
+    'render_template' => 'block/' . $phpFile,
+    'category'        => 'formatting',
+    'icon'            => 'admin-comments',
+    'keywords'        => array( str_replace(".php", "", $phpFile) ),
+) );
+            }
+        } 
+    }    
 }
 
 add_theme_support( 'post-thumbnails' );
