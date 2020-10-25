@@ -1,1 +1,1 @@
-The bare minimum to create custom acf guttenberg blocks
+From the bare minimum to the full-fledged creation of custom acf guttenberg blocks
