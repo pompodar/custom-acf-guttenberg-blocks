@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://custom-acf-guttenberg-blocks/blocks/awesome-block/awesome-block.scss"],"names":[],"mappings":"AAAA;EACI,UAAU","file":"style.css","sourcesContent":[".svjat-block-awesome-block {\r\n    color: red;\r\n}"],"sourceRoot":""}
